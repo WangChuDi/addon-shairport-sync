@@ -50,7 +50,7 @@ RUN apk add --no-cache \
         dbus \
         alsa-lib \
         alsa-plugins-pulse \
-        pulseaudio \
+        pulseaudio-libs \
         popt \
         openssl \
         soxr \
