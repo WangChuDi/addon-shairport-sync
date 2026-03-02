@@ -14,14 +14,12 @@ RUN apk add --no-cache --virtual .build-deps \
         automake \
         libtool \
         alsa-lib-dev \
-        pulseaudio-dev \
         popt-dev \
         openssl-dev \
         soxr-dev \
         avahi-dev \
         libconfig-dev \
         xxd \
-        ffmpeg-dev \
  && cd /tmp \
  && git clone --depth 1 https://github.com/mikebrady/shairport-sync.git \
  && cd shairport-sync \
@@ -30,13 +28,11 @@ RUN apk add --no-cache --virtual .build-deps \
         --prefix=/usr \
         --sysconfdir=/etc \
         --with-alsa \
-        --with-pa \
         --with-pipe \
         --with-avahi \
         --with-ssl=openssl \
         --with-soxr \
         --with-metadata \
-        --with-ffmpeg \
  && make \
  && make install DESTDIR=/tmp/shairport-install
 
@@ -49,14 +45,11 @@ FROM ${BUILD_FROM}
 RUN apk add --no-cache \
         dbus \
         alsa-lib \
-        alsa-plugins-pulse \
-        pulseaudio-libs \
         popt \
         openssl \
         soxr \
         avahi \
-        libconfig \
-        ffmpeg-libs
+        libconfig
 
 # Copy shairport-sync binary and config from builder
 COPY --from=builder /tmp/shairport-install/usr/bin/shairport-sync /usr/bin/shairport-sync
