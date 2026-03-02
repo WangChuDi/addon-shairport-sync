@@ -14,6 +14,7 @@ RUN apk add --no-cache --virtual .build-deps \
         automake \
         libtool \
         alsa-lib-dev \
+        pulseaudio-dev \
         popt-dev \
         openssl-dev \
         soxr-dev \
@@ -29,6 +30,7 @@ RUN apk add --no-cache --virtual .build-deps \
         --prefix=/usr \
         --sysconfdir=/etc \
         --with-alsa \
+        --with-pa \
         --with-pipe \
         --with-avahi \
         --with-ssl=openssl \
@@ -48,6 +50,7 @@ RUN apk add --no-cache \
         dbus \
         alsa-lib \
         alsa-plugins-pulse \
+        pulseaudio \
         popt \
         openssl \
         soxr \
